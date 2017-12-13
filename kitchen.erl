@@ -13,7 +13,8 @@ fridge1() ->
         {From, {take, _Food}} -> %% uh....
                                  From ! {self(), not_found},
                                  fridge1();
-        terminate -> ok
+                                 
+        terminate             -> ok
     end.
 
 fridge2(FoodList) ->
@@ -27,7 +28,7 @@ fridge2(FoodList) ->
                                    false -> From ! {self(), not_found},
                                             fridge2(FoodList)
                                  end;
-                                 
+
         terminate             -> ok
     end.
 
